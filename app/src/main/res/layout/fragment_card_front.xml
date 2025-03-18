@@ -1,0 +1,6 @@
+<view xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_front"
+    class="com.example.finalproj.CardFrontImageView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="centerCrop" />

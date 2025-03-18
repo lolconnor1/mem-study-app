@@ -36,7 +36,7 @@ public class moduleView extends AppCompatActivity {
         });
 
         listView = (ListView) findViewById(R.id.listView);
-        String[] set = {"Spanish 1", "Spanish 2", "Spanish 3", "Spanish 4"};
+        String[] set = {"Danish 1", "Danish 2", "Danish 3", "Danish 4"};
         modules = new ArrayList<String>(Arrays.asList(set));
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, modules);
         listView.setAdapter(arrayAdapter);
@@ -47,7 +47,7 @@ public class moduleView extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 Intent intent = new Intent(getApplicationContext(), moduleSetup.class);
-                intent.putExtra("modNum", modules.get(position));
+                intent.putExtra("modNum", position);
                 startActivity(intent);
                 finish();
             }
