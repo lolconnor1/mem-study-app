@@ -443,7 +443,8 @@ public class tapModule extends Activity implements View.OnTouchListener
     // A fragment representing the front of the card (select image accordingly)
     public static class CardFrontFragment extends Fragment
     {
-        CardFrontImageView frontView;
+        View frontView;
+        TextView cardFrontText;
 
         public CardFrontFragment()
         {
@@ -452,9 +453,9 @@ public class tapModule extends Activity implements View.OnTouchListener
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            frontView = (CardFrontImageView)inflater.inflate(R.layout.fragment_card_front, container, false);
-            frontView.setImageResource(imageId);
-            frontView.setTitleText(title);
+            frontView = inflater.inflate(R.layout.fragment_card_front, container, false);
+            cardFrontText = (TextView) frontView.findViewById(R.id.cardFrontText);
+            cardFrontText.setText(title);
             return frontView;
         }
     }
