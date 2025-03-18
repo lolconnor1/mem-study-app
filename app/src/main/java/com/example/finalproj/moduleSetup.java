@@ -39,7 +39,7 @@ public class moduleSetup extends AppCompatActivity {
         intType.setAdapter(adapter2);
 
         Intent intent = getIntent();
-        String num = intent.getStringExtra("modNum");
+        int num = intent.getIntExtra("modNum", 0);
 
 
         backButton.setOnClickListener(new View.OnClickListener() {

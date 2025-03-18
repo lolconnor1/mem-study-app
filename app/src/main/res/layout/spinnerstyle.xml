@@ -3,6 +3,6 @@
     android:id="@+id/spinnerstyle"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#3F51B5"
     android:gravity="center"
-    android:textAppearance="?android:attr/textAppearanceMedium" />
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:textSize="20sp" />
