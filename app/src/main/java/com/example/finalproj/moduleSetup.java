@@ -63,7 +63,10 @@ public class moduleSetup extends AppCompatActivity {
                     finish();
                 }
                 else if(type.equals("Typing")){
-
+                    Intent intent = new Intent(getApplicationContext(), typeModule.class);
+                    intent.putExtra("modNum", num);
+                    startActivity(intent);
+                    finish();
                 }
                 else if(type.equals("Voice")){
 
