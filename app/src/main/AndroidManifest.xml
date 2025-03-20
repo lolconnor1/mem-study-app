@@ -15,6 +15,9 @@
         android:theme="@style/Theme.FinalProj"
         tools:targetApi="31">
         <activity
+            android:name=".typeModule"
+            android:exported="false" />
+        <activity
             android:name=".moduleStats"
             android:exported="false" />
         <activity

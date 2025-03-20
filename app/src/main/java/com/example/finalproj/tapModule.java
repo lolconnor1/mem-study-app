@@ -1,10 +1,8 @@
 package com.example.finalproj;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Random;
 
@@ -248,11 +245,9 @@ public class tapModule extends Activity implements View.OnTouchListener
     // keys for get/put methods
     final String TITLE_KEY = "title_key";
     final String TEXT_KEY = "text_key";
-    final String BACKGROUND_COLOR_KEY = "background_color_key";
     final String SHOWING_BACK_KEY = "showing_back_key";
 
     // resources for card front and back fragments, etc.
-    static int imageId;
     static int cardNumber; // keep track of the card currently being viewed
     static String title, text;
     static int backgroundColor;
@@ -283,6 +278,7 @@ public class tapModule extends Activity implements View.OnTouchListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tap_module);
 
+
         Intent i = getIntent();
         int num = i.getIntExtra("modNum", 0);
 
@@ -306,7 +302,7 @@ public class tapModule extends Activity implements View.OnTouchListener
         }
 
         // UI responds to touch gestures
-        cardView = (FrameLayout)findViewById(R.id.container);
+        cardView = (FrameLayout) findViewById(R.id.container);
         cardView.setOnTouchListener(this);
         gestureDetector = new GestureDetector(this.getBaseContext(), new MyGestureListener());
 
@@ -345,26 +341,6 @@ public class tapModule extends Activity implements View.OnTouchListener
         showingBack = false; // next flip will show back
     }
 
-    /*
-     * Advance to the next card. The transition includes a "card slide" animation. If we are already
-     * viewing the last card, do nothing (but use a Toast dialog to inform the user).
-     */
-    private void nextCard()
-    {
-
-        if(showingBack){
-            //generate random card number, go to it
-            int newCardNum = rand.nextInt(10);
-            while(newCardNum == cardNumber){
-                newCardNum = rand.nextInt(10);
-            }
-            cardNumber = newCardNum;
-            setCard(cardNumber);
-            getFragmentManager().beginTransaction().setCustomAnimations(R.animator.card_slide_left_enter,
-                    R.animator.card_slide_right_exit).replace(R.id.container, new CardFrontFragment()).commit();
-
-        }
-    }
 
     /*
      * The UI responds to finger gestures. No need to get down-and-dirty with onTouch. Let Android's
@@ -419,7 +395,6 @@ public class tapModule extends Activity implements View.OnTouchListener
     {
         savedInstanceState.putString(TITLE_KEY, title);
         savedInstanceState.putString(TEXT_KEY, text);
-        savedInstanceState.putInt(BACKGROUND_COLOR_KEY, backgroundColor);
         savedInstanceState.putBoolean(SHOWING_BACK_KEY, showingBack);
         super.onSaveInstanceState(savedInstanceState);
     }
@@ -431,7 +406,6 @@ public class tapModule extends Activity implements View.OnTouchListener
         super.onRestoreInstanceState(savedInstanceState);
         title = savedInstanceState.getString(TITLE_KEY);
         text = savedInstanceState.getString(TEXT_KEY);
-        backgroundColor = savedInstanceState.getInt(BACKGROUND_COLOR_KEY);
         showingBack = savedInstanceState.getBoolean(SHOWING_BACK_KEY);
     }
 
@@ -443,7 +417,8 @@ public class tapModule extends Activity implements View.OnTouchListener
     // A fragment representing the front of the card (select image accordingly)
     public static class CardFrontFragment extends Fragment
     {
-        CardFrontImageView frontView;
+        View frontView;
+        TextView cardFrontText;
 
         public CardFrontFragment()
         {
@@ -452,9 +427,9 @@ public class tapModule extends Activity implements View.OnTouchListener
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            frontView = (CardFrontImageView)inflater.inflate(R.layout.fragment_card_front, container, false);
-            frontView.setImageResource(imageId);
-            frontView.setTitleText(title);
+            frontView = inflater.inflate(R.layout.fragment_card_front, container, false);
+            cardFrontText = (TextView) frontView.findViewById(R.id.cardFrontText);
+            cardFrontText.setText(title);
             return frontView;
         }
     }
