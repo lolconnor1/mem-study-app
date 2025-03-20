@@ -69,7 +69,10 @@ public class moduleSetup extends AppCompatActivity {
                     finish();
                 }
                 else if(type.equals("Voice")){
-
+                    Intent intent = new Intent(getApplicationContext(), voiceModule.class);
+                    intent.putExtra("modNum", num);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });
