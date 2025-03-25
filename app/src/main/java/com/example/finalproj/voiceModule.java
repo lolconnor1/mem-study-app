@@ -61,6 +61,8 @@ public class voiceModule extends Activity implements View.OnTouchListener{
 
     static boolean corbool = false;
     private static final int REQUEST_CODE_SPEECH_INPUT = 1;
+    static ArrayList<Integer> srs = new ArrayList<>();
+
 
 
     @Override
@@ -272,6 +274,10 @@ public class voiceModule extends Activity implements View.OnTouchListener{
                     if (def.equals(text.toLowerCase())) {
                         correct++;
                         corbool = true;
+                        srs.add(cardNumber);
+                        if(srs.size() == 15){
+                            srs.clear();
+                        }
                     } else {
                         corbool = false;
                     }
@@ -328,9 +334,9 @@ public class voiceModule extends Activity implements View.OnTouchListener{
                 public void onClick(View v) {
 
                     //generate random card number, go to it
-                    int newCardNum = rand.nextInt(10);
-                    while (newCardNum == cardNumber) {
-                        newCardNum = rand.nextInt(10);
+                    int newCardNum = rand.nextInt(15);
+                    while (srs.contains(newCardNum)) {
+                        newCardNum = rand.nextInt(15);
                     }
                     cardNumber = newCardNum;
                     setCard(cardNumber);

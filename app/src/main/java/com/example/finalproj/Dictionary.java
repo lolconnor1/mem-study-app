@@ -15,52 +15,72 @@ public class Dictionary {
         words = new HashMap<>();
         wordList = new ArrayList<>();
         if(num == 0){
+            addWord("Ske", "Spoon");
+            addWord("Gaffel", "Fork");
+            addWord("Tallerken", "Plate");
             addWord("Vindue", "Window");
-            addWord("Sort", "Black");
-            addWord("Lærer", "Teacher");
-            addWord("Ven", "Friend");
-            addWord("Dør", "Door");
-            addWord("Stjerne", "Star");
-            addWord("Familie", "Family");
-            addWord("Hus", "House");
-            addWord("Regn", "Rain");
-            addWord("Væg", "Wall");
+            addWord("Tag", "Roof");
+            addWord("Gulv", "Floor");
+            addWord("Skov", "Forest");
+            addWord("Flod", "River");
+            addWord("Hav", "Sea");
+            addWord("Græs", "Grass");
+            addWord("Bakke", "Hill");
+            addWord("Måne", "Moon");
+            addWord("Skygge", "Shadow");
+            addWord("Lyn", "Lightning");
+            addWord("Torden", "Thunder");
         }
         else if(num == 1){
-            addWord("Fugl", "Bird");
-            addWord("Bror", "Brother");
-            addWord("Dag", "Day");
-            addWord("Måne", "Moon");
-            addWord("Seng", "Bed");
-            addWord("Papir", "Paper");
-            addWord("Vinter", "Winter");
-            addWord("Brød", "Bread");
-            addWord("Sne", "Snow");
-            addWord("Bil", "Car");
+            addWord("Nabo", "Neighbor");
+            addWord("Ven", "Friend");
+            addWord("Fjende", "Enemy");
+            addWord("Skulder", "Shoulder");
+            addWord("Knæ", "Knee");
+            addWord("Albue", "Elbow");
+            addWord("Håndled", "Wrist");
+            addWord("Ankel", "Ankle");
+            addWord("Ryg", "Back");
+            addWord("Bryst", "Chest");
+            addWord("Tunge", "Tongue");
+            addWord("Kind", "Cheek");
+            addWord("Øjenbryn", "Eyebrow");
+            addWord("Negl", "Nail");
+            addWord("Pande", "Forehead");
         }
         else if(num == 2){
-            addWord("Skole", "School");
-            addWord("Fisk", "Fish");
-            addWord("Stol", "Chair");
-            addWord("Hvid", "White");
-            addWord("Nat", "Night");
-            addWord("Barn", "Child");
-            addWord("Mad", "Food");
-            addWord("Far", "Father");
-            addWord("Bord", "Table");
-            addWord("Bog", "Book");
+            addWord("Skubbe", "Push");
+            addWord("Trække", "Pull");
+            addWord("Springe", "Jump");
+            addWord("Falde", "Fall");
+            addWord("Vride", "Twist");
+            addWord("Snurre", "Spin");
+            addWord("Skælve", "Tremble");
+            addWord("Hoste", "Cough");
+            addWord("Gabe", "Yawn");
+            addWord("Grine", "Laugh");
+            addWord("Hviske", "Whisper");
+            addWord("Fnyse", "Snort");
+            addWord("Sukke", "Sigh");
+            addWord("Ryste", "Shake");
+            addWord("Bøje", "Bend");
         }
         else if(num == 3){
-            addWord("Træ", "Tree");
-            addWord("Ost", "Cheese");
-            addWord("Sol", "Sun");
-            addWord("Sommer", "Summer");
-            addWord("Hest", "Horse");
-            addWord("Kat", "Cat");
-            addWord("Søster", "Sister");
-            addWord("Hund", "Dog");
-            addWord("Vand", "Water");
-            addWord("Mor", "Mother");
+            addWord("Drøm", "Dream");
+            addWord("Løgn", "Lie");
+            addWord("Sandhed", "Truth");
+            addWord("Skyld", "Guilt");
+            addWord("Håb", "Hope");
+            addWord("Skæbne", "Fate");
+            addWord("Tvivl", "Doubt");
+            addWord("Lykke", "Happiness");
+            addWord("Sorg", "Sorrow");
+            addWord("Vrede", "Anger");
+            addWord("Tålmodighed", "Patience");
+            addWord("Begær", "Desire");
+            addWord("Venskab", "Friendship");
+            addWord("Enshed", "Loneliness");
+            addWord("Mørke", "Darkness");
         }
     }
 

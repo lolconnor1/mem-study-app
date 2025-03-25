@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
@@ -15,8 +16,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class moduleSetup extends AppCompatActivity {
 
-    Button backButton, startButton;
-    final static String[] INTERACTION_TYPES = { "Tapping", "Typing", "Voice" };
+    Button startButton;
+    ImageView backButton;
+    final static String[] INTERACTION_TYPES = { "Tapping", "Typing", "Voice", "Dragging" };
     Spinner intType;
 
 
@@ -32,7 +34,7 @@ public class moduleSetup extends AppCompatActivity {
             return insets;
         });
 
-        backButton = (Button) findViewById(R.id.backButton);
+        backButton = (ImageView) findViewById(R.id.backButton);
         startButton = (Button) findViewById(R.id.startButton);
         intType = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter<CharSequence>(this, R.layout.spinnerstyle, INTERACTION_TYPES);
@@ -70,6 +72,12 @@ public class moduleSetup extends AppCompatActivity {
                 }
                 else if(type.equals("Voice")){
                     Intent intent = new Intent(getApplicationContext(), voiceModule.class);
+                    intent.putExtra("modNum", num);
+                    startActivity(intent);
+                    finish();
+                }
+                else if(type.equals("Dragging")){
+                    Intent intent = new Intent(getApplicationContext(), dragModule.class);
                     intent.putExtra("modNum", num);
                     startActivity(intent);
                     finish();
