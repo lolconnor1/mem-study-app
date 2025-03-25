@@ -5,4 +5,4 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:textAppearance="?android:attr/textAppearanceMedium"
-    android:textSize="20sp" />
+    android:textSize="30sp" />

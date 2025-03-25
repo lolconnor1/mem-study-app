@@ -18,6 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class typeModule extends Activity implements View.OnTouchListener{
@@ -53,6 +54,7 @@ public class typeModule extends Activity implements View.OnTouchListener{
     static String def;
 
     static boolean corbool = false;
+    static ArrayList<Integer> srs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,6 +208,10 @@ public class typeModule extends Activity implements View.OnTouchListener{
                     if(def.equals(text.toLowerCase())){
                         correct++;
                         corbool = true;
+                        srs.add(cardNumber);
+                        if(srs.size() == 15){
+                            srs.clear();
+                        }
                     }
                     else{
                         corbool = false;
@@ -250,6 +256,7 @@ public class typeModule extends Activity implements View.OnTouchListener{
             if(corbool){
                 cor.setText("Correct");
                 cor.setTextColor(0xFF239b56);
+
             }
             else{
                 cor.setText("Wrong");
@@ -260,9 +267,9 @@ public class typeModule extends Activity implements View.OnTouchListener{
                 public void onClick(View v) {
 
                     //generate random card number, go to it
-                    int newCardNum = rand.nextInt(10);
-                    while (newCardNum == cardNumber) {
-                        newCardNum = rand.nextInt(10);
+                    int newCardNum = rand.nextInt(15);
+                    while (srs.contains(newCardNum)) {
+                        newCardNum = rand.nextInt(15);
                     }
                     cardNumber = newCardNum;
                     setCard(cardNumber);

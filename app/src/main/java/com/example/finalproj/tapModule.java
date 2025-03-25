@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -254,6 +255,7 @@ public class tapModule extends Activity implements View.OnTouchListener
 
     static String[] cardTitle;
     static String[] cardText;
+    static ArrayList<Integer> srs;
 
     FrameLayout cardView; // we need this to attach the touch listener
     GestureDetector gestureDetector; // use Android's GestureDetector for touch gestures
@@ -290,6 +292,7 @@ public class tapModule extends Activity implements View.OnTouchListener
 
         cardTitle = dictionary.getAllWords();
         cardText = dictionary.getAllMeanings();
+        srs = new ArrayList<>();
 
         if (savedInstanceState == null)
         {
@@ -467,9 +470,9 @@ public class tapModule extends Activity implements View.OnTouchListener
                     total++;
                     correctView.setText(correct + "/" + total);
                     //generate random card number, go to it
-                    int newCardNum = rand.nextInt(10);
-                    while (newCardNum == cardNumber) {
-                        newCardNum = rand.nextInt(10);
+                    int newCardNum = rand.nextInt(15);
+                    while (srs.contains(newCardNum)) {
+                        newCardNum = rand.nextInt(15);
                     }
                     cardNumber = newCardNum;
                     setCard(cardNumber);
@@ -486,10 +489,14 @@ public class tapModule extends Activity implements View.OnTouchListener
                     total++;
                     correct++;
                     correctView.setText(correct + "/" + total);
+                    srs.add(cardNumber);
+                    if(srs.size() == 15){
+                        srs.clear();
+                    }
                     //generate random card number, go to it
-                    int newCardNum = rand.nextInt(10);
-                    while (newCardNum == cardNumber) {
-                        newCardNum = rand.nextInt(10);
+                    int newCardNum = rand.nextInt(15);
+                    while (srs.contains(newCardNum)) {
+                        newCardNum = rand.nextInt(15);
                     }
                     cardNumber = newCardNum;
                     setCard(cardNumber);
